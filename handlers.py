@@ -2,12 +2,12 @@ import json
 import time
 
 from aiogram import Router, F
-from aiogram.types import Message
 from aiogram.filters import Command
-from keyboard import main_kb
+from aiogram.types import Message
 from aiogram.utils.markdown import hbold, hlink
 
 from collectData import collect_data
+from keyboard import main_kb
 
 router = Router()
 
