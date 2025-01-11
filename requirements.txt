@@ -1,3 +1,5 @@
 pip~=24.3.1
 aiogram~=3.17.0
 python-dotenv~=1.0.1
+requests~=2.32.3
+fake_useragent~=2.0.3
