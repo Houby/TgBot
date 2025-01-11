@@ -8,9 +8,14 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.types import Message
 
 import getEnv
+import settings
 from keyboard import main_kb
 
 router = Router()
+if settings.prod:
+    used_bot_token=getEnv.bot_token
+else:
+    used_bot_token = getEnv.dev_bot_token
 
 
 async def main():
