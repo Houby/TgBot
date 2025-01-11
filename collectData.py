@@ -47,7 +47,6 @@ def collect_data(request_time):
             for i in articles:
                 if 'Binance Will Delist' in i.get('title') and 'Options' not in i.get('title') and 'Margin' not in i.get('title'):
                     if str(i.get('releaseDate')) > required_time:
-                        print(i.get('title'))
                         article_full_title = i.get('title')
                         article_timestamp = i.get('releaseDate')
                         article_code = i.get('code')
