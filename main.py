@@ -12,14 +12,15 @@ import settings
 from keyboard import main_kb
 
 router = Router()
+
 if settings.prod:
-    used_bot_token=getEnv.bot_token
+    used_bot_token = getEnv.bot_token
 else:
     used_bot_token = getEnv.dev_bot_token
 
 
 async def main():
-    bot = Bot(token=getEnv.bot_token, default=client.default.DefaultBotProperties(parse_mode=ParseMode.HTML))
+    bot = Bot(token=used_bot_token, default=client.default.DefaultBotProperties(parse_mode=ParseMode.HTML))
     dp = Dispatcher(storage=MemoryStorage())
     dp.include_router(router)
     await bot.delete_webhook(drop_pending_updates=True)
