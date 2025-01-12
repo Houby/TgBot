@@ -7,9 +7,12 @@ from bybitFunctions import get_market_price, get_wallet_balance, get_historical_
 
 
 def get_binance_coins():
+    now_time = int(datetime.now().timestamp())
+    now_time_ms = now_time * 1000
+
     while True:
         coin_list = []
-        time_multiplication = 1   # TODO Change 1 to 10
+        time_multiplication = 1  # TODO Change 1 to 10
         request_time = 'month'   # TODO Change month to today
         result_collect = collect_data(request_time)
 
@@ -18,7 +21,7 @@ def get_binance_coins():
 
         if data:
             timestamp_from_data = data[0]['timestamp']
-            needed_timestamp = (datetime.now().timestamp() - 2629743) * 1000   # TODO Change 2629743 to 600
+            needed_timestamp = (now_time - 2629743) * 1000  # TODO Change 2629743 to 600
 
             if timestamp_from_data > needed_timestamp:
                 right_timestamp_boolean = True
@@ -40,21 +43,25 @@ def get_binance_coins():
 
             for index, item in enumerate(coin_list):
                 print('item: ', item)
-                price_of_coin = get_market_price("BTCUSDT")   # TODO Change "BTCUSDT" to item
+                price_of_coin = get_market_price("BTCUSDT")  # TODO Change "BTCUSDT" to item
                 print("price_of_coin: ", price_of_coin)
+
                 if price_of_coin != 'error':
                     real_wallet_balance = get_wallet_balance()
                     print('real_wallet_balance: ', real_wallet_balance)
-                #
-                # if real_wallet_balance != 'error':
-                #     get_historical_interval(symbol=item, interval=1, start=1, end=1, limit=1)
+
+                    if real_wallet_balance != 'error':
+                        real_klines = get_historical_interval(symbol='BTCUSDT', interval='1',   # TODO Change "BTCUSDT" to item
+                                                              start=str((now_time - 600) * 1000), end=str(now_time_ms))
+
+                        print('real_klines: ', real_klines)
 
             time.sleep(120 * time_multiplication)
 
         else:
             print('None delist get.')
 
-        time.sleep(3*time_multiplication)
+        time.sleep(3 * time_multiplication)
 
 
 if __name__ == "__main__":

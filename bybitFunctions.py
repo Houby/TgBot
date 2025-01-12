@@ -63,8 +63,8 @@ def get_wallet_balance(account_type='UNIFIED', coin='USDT'):
 
 
 # запрос свечей по интервалу
-def get_historical_interval(symbol, interval, start, end, limit, category='linear'):
-    query_string = "category=" + category + "&symbol=" + symbol + "&interval=" + interval + "&start=" + str(start) + "&end=" + str(end) + "&limit=" + limit
+def get_historical_interval(symbol, interval, start, end, category='linear'):
+    query_string = "category=" + category + "&symbol=" + symbol + "&interval=" + interval + "&start=" + str(start) + "&end=" + str(end)
     url = 'https://api.bybit.com/v5/market/kline?' + query_string
     current_time = int(time.time() * 1000)
     sign = hashing(str(current_time) + api_key + '5000' + query_string)
