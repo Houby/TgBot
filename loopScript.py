@@ -40,7 +40,7 @@ def get_binance_coins():
 
             for index, item in enumerate(coin_list):
                 print('item: ', item)
-                price_of_coin = get_market_price("BTCUSDT")
+                price_of_coin = get_market_price("BTCUSDT")   # TODO Change "BTCUSDT" to item
                 print("price_of_coin: ", price_of_coin)
                 if price_of_coin != 'error':
                     real_wallet_balance = get_wallet_balance()
