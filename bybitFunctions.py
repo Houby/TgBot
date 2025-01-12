@@ -55,7 +55,6 @@ def get_wallet_balance(account_type='UNIFIED', coin='USDT'):
     if response != "<Response [401]>":
         data_parsed = json.loads(response.text)
         real_wallet_balance = float(data_parsed['result']['list'][0]['totalEquity']) / 100   # TODO Change 100 to 5
-        print(real_wallet_balance)
         return real_wallet_balance
 
     else:

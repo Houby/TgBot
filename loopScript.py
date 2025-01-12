@@ -39,11 +39,12 @@ def get_binance_coins():
                 coin_list[index] = coin_list[index] + 'USDT'
 
             for index, item in enumerate(coin_list):
-                print(item)
-                price_of_coin = get_market_price(item)
-                print(price_of_coin)
-                # if price_of_coin != 'error':
-                #     real_wallet_balance = get_wallet_balance()
+                print('item: ', item)
+                price_of_coin = get_market_price("BTCUSDT")
+                print("price_of_coin: ", price_of_coin)
+                if price_of_coin != 'error':
+                    real_wallet_balance = get_wallet_balance()
+                    print('real_wallet_balance: ', real_wallet_balance)
                 #
                 # if real_wallet_balance != 'error':
                 #     get_historical_interval(symbol=item, interval=1, start=1, end=1, limit=1)
